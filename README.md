@@ -3,9 +3,10 @@ A complete set of ERP tools built with Django Rest Framework and Vue js
 
 ## Backend
 1. Django Rest Framework
-2. Postgres
-3. Django - Filter
-4. Swagger
+2. Djoser
+3. Postgres
+4. Django - Filter
+5. Swagger
 
 ### Frontend
 1. Vue js
