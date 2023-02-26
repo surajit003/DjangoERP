@@ -11,5 +11,9 @@ class AbstractUseCaseFactory(ABC):
 
 
 class InternalUseCaseFactory(AbstractUseCaseFactory):
+    """
+    Use this factory when you want to save the data in DjangoERP
+    """
+
     def get_repo(self):
         return LeadRepository()
