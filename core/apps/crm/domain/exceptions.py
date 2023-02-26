@@ -1,6 +1,2 @@
-class ContactAlreadyExistException(Exception):
-    ...
-
-
 class InvalidPhoneNumberException(Exception):
     ...
