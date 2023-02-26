@@ -31,27 +31,25 @@ of the inbuilt DRF serializers.
 
 ## How processing occurs ?
 
-- On a high level, let's understand the different layers of processing
+On a high level, let's understand the different layers of processing
 
-- User request is routed through the url patterns and hits the right view.
+        - User request is routed through the url patterns and hits the right view.
 
-- The correct view function based on the request.method gets the data.
+        - The correct view function based on the request.method gets the data.
 
-- The data is then handed over to a logic function which is typically the business logic layer.
+        - The data is then handed over to a logic function which is typically the business logic layer.
 
-- The logic then interacts with the repository method and invokes the right repo method.
+        - The logic then interacts with the repository method and invokes the right repo method.
 
-- Repository interacts with the database and saves or gets the data.
+        - Repository interacts with the database and saves or gets the data.
 
-- The data is then returned to the view
+        - The data is then returned to the view
 
 Small gotcha ?
 
- - The view uses something called a use_case_type. What the heck is a use_case_type ? Well, put it this way - Think about if you decide to save the data
- to an external crm e.g hubspot. Then the use_case_type="hubspot" and based on the use_case_type, the `get_repository_for_{entity_name}` will return the 
- right repository. So, technically nothing changes in the view and you can plug external crms to save data or get data easily.
+        - The view uses something called a use_case_type. What the heck is a use_case_type ? Well, put it this way - Think about, if you decide to save the data to an external crm e.g hubspot. Then, simply changing the use_case_type="hubspot" is enough and based on the use_case_type, the `get_repository_for_{entity_name}` will return the right repository. So, technically nothing changes in the view and you can plug external crms to save data or get data easily.
  
- - Additionally, the repository abstracts away all the CRUD logic. So, plugging things in and out without worrying about the Infrastructure is a charm.
+        - Additionally, the repository abstracts away all the CRUD logic. So, plugging things in and out without worrying about the Infrastructure is a charm.
  
  
 
