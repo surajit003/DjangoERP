@@ -23,7 +23,11 @@ High Level Overview of the Backend architecture and the Why?
         tests - where the tests go. However, the tests are further broken down by domain/ , repo/, logic/ , handlers/ 
         
 - All the Django apps will follow the above structure. This design has been chosen also to separate Infrastructure concerns coupling the code.
+
+- Since, I am designing the architecture with complete freedom, I am going with Pydantic for data validation, serialization and de-serialization instead
+of the inbuilt DRF serializers.
         
+        - Inspiration was taken from this thread - https://news.ycombinator.com/item?id=24161828
 
 ## Backend
 1. Django Rest Framework
@@ -31,6 +35,7 @@ High Level Overview of the Backend architecture and the Why?
 3. Postgres
 4. Django - Filter
 5. Swagger
+6. Pydantic
 
 ### Frontend
 1. Vue js
