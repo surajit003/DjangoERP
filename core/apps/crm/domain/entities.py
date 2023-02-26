@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import EmailStr, AnyHttpUrl, Field
+from pydantic import EmailStr, AnyHttpUrl
 
 from core.apps.common.entities import Entity
 
