@@ -22,12 +22,12 @@ class PriorityStatus(str, Enum):
     HIGH = "high"
 
 
-class Lead(Entity):
+class LeadEntity(Entity):
     company: str
     contact_person: str
     email: EmailStr
     phone: str
-    website: Optional[AnyHttpUrl, None]
+    website: Optional[AnyHttpUrl]
     estimated_value: int
     status: LeadStatus = LeadStatus.NEW
     priority: PriorityStatus = PriorityStatus.LOW

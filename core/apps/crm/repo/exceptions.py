@@ -1,2 +1,2 @@
-class LeadAlreadyExistException(Exception):
+class LeadExistException(Exception):
     ...
