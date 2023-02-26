@@ -1,9 +1,11 @@
 import re
 from enum import Enum
+from typing import Optional
 
 from pydantic import EmailStr, AnyHttpUrl, validator
 
 from core.apps.common.entities import Entity
+from core.apps.crm.domain.exceptions import InvalidPhoneNumberException
 
 
 class LeadStatus(str, Enum):
@@ -25,11 +27,10 @@ class Lead(Entity):
     contact_person: str
     email: EmailStr
     phone: str
-    website: AnyHttpUrl
-    confidence: int
+    website: Optional[AnyHttpUrl, None]
     estimated_value: int
-    status: LeadStatus
-    priority: PriorityStatus
+    status: LeadStatus = LeadStatus.NEW
+    priority: PriorityStatus = PriorityStatus.LOW
 
     @validator("phone")
     def phone_validation(cls, v):
@@ -37,5 +38,5 @@ class Lead(Entity):
         # -value-error-missing
         regex = r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$"
         if v and not re.search(regex, v, re.I):
-            raise ValueError("Invalid Phone Number.")
+            raise InvalidPhoneNumberException("Invalid Phone Number.")
         return v
