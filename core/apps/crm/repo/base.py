@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
 from uuid import UUID
 
-from core.apps.crm.domain.entities import Lead
+from core.apps.crm.domain.entities import LeadEntity
 
 
 class AbstractLeadRepository(ABC):
     @abstractmethod
-    def save(self, lead: Lead):
+    def save(self, lead: LeadEntity):
         ...
 
     @abstractmethod
@@ -14,7 +14,7 @@ class AbstractLeadRepository(ABC):
         ...
 
     @abstractmethod
-    def update(self, lead: Lead):
+    def update(self, lead: LeadEntity):
         ...
 
     @abstractmethod

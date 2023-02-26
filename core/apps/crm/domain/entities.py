@@ -22,7 +22,7 @@ class PriorityStatus(str, Enum):
     HIGH = "high"
 
 
-class Lead(Entity):
+class LeadEntity(Entity):
     company: str
     contact_person: str
     email: EmailStr
