@@ -21,7 +21,6 @@ class PriorityStatus(str, Enum):
 
 
 class Lead(Entity):
-    id = Field(default_factory=lambda: uuid.uuid4().hex)
     company: str
     contact_person: str
     email: EmailStr
