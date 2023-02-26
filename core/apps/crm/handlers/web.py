@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.apps.crm.handlers.factories import get_repository_for_lead_creation
@@ -14,7 +15,8 @@ class LeadAPIView(APIView):
         try:
             lead = create_lead(lead_data=data, lead_repo=lead_repo)
         except LeadExistException:
-            return HttpResponse(
-                error="Lead with that Email Ecist", status=status.HTTP_400_BAD_REQUEST
+            return Response(
+                {"message": "Lead with that Email Exist"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
-        return HttpResponse(lead.json(), status=status.HTTP_201_CREATED)
+        return Response(lead.dict(), status=status.HTTP_201_CREATED)
