@@ -76,7 +76,7 @@ export default {
             .catch(errors => {
               if (errors.response) {
                 for (const property in errors.response.data) {
-                  this.errors.push(`${property}: ${errors.response.data[property]}`)
+                  this.errors.push(`${errors.response.data[property]}`)
                 }
               } else if (errors.message) {
                 this.errors.push(errors.message);
