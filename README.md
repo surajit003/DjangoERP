@@ -11,6 +11,7 @@ High Level Overview of the Backend architecture and the Why?
 - I have decided not to go with the ideal MVT architecture of Django.
 
 - Taking inspiration from DDD, I have structured the project into the following :
+
         domain - where all the domain logic goes.
         
         repo - where all the repository logic goes.
