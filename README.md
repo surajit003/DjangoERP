@@ -11,11 +11,15 @@ High Level Overview of the Backend architecture and the Why?
 - I have decided not to go with the ideal MVT architecture of Django.
 
 - Taking inspiration from DDD, I have structured the project into the following :
-        1. domain - where all the domain logic goes.
-        2. repo - where all the repository logic goes.
-        3. logic - where all the busines logic goes.
-        4. handlers - where the usual views and webhooks go.
-        5. tests - where the tests go. However, the tests are further broken down by domain/ , repo/, logic/ , handlers/ 
+        domain - where all the domain logic goes.
+        
+        repo - where all the repository logic goes.
+        
+        logic - where all the busines logic goes.
+        
+        handlers - where the usual views and webhooks go.
+        
+        tests - where the tests go. However, the tests are further broken down by domain/ , repo/, logic/ , handlers/ 
         
 - All the Django apps will follow the above structure. This design has been chosen also to separate Infrastructure concerns coupling the code.
         
