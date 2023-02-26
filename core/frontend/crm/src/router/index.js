@@ -39,7 +39,7 @@ const routes = [
         }
     },
     {
-        path: '/my-account',
+        path: '/dashboard/my-account',
         name: 'my-account',
         component: MyAccountView,
         meta: {
