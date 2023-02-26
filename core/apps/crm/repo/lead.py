@@ -17,17 +17,14 @@ class LeadRepository(AbstractLeadRepository):
         except IntegrityError as exc:
             raise LeadExistException(exc)
 
-    def update(self, obj: LeadEntity) -> Optional[LeadEntity]:
-        is_update = Lead.objects.filter(id=obj.id).update(**obj.dict())
-        if is_update:
-            lead_obj = Lead.objects.get(id=obj.id)
-            return LeadEntity(**lead_obj.__dict__)
-        else:
-            return None
+    def update(self, obj: LeadEntity) -> LeadEntity:
+        Lead.objects.filter(id=obj.id).update(**obj.dict())
+        lead_obj = Lead.objects.get(id=obj.id)
+        return LeadEntity(**lead_obj.__dict__)
 
     def delete(self, lead_id) -> None:
         Lead.objects.filter(id=lead_id).delete()
 
     def get(self, lead_id) -> LeadEntity:
         lead_obj = Lead.objects.get(id=lead_id)
-        return LeadEntity(lead_obj.__dict__)
+        return LeadEntity(**lead_obj.__dict__)
