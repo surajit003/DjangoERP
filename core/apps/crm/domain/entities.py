@@ -27,7 +27,7 @@ class Lead(Entity):
     contact_person: str
     email: EmailStr
     phone: str
-    website: Optional[AnyHttpUrl, None]
+    website: Optional[AnyHttpUrl]
     estimated_value: int
     status: LeadStatus = LeadStatus.NEW
     priority: PriorityStatus = PriorityStatus.LOW
