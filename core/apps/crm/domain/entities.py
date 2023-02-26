@@ -1,4 +1,3 @@
-import uuid
 from enum import Enum
 
 from pydantic import EmailStr, AnyHttpUrl, Field
