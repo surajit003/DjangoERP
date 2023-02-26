@@ -89,12 +89,13 @@ export default {
               })
               this.$router.push("/login")
             })
-            .catch(error =>{
-              if(error.response){
-                 console.log(error.response);
-              }
-              else if(error.message){
-                console.log("error"  + error);
+            .catch(error => {
+              if (error.response) {
+                for (const property in error.response.data) {
+                  this.errors.push(`${property}: ${error.response.data[property]}`);
+                }
+              } else if (error.message) {
+                this.errors.push('Something went wrong. Please try again!');
               }
             })
       }

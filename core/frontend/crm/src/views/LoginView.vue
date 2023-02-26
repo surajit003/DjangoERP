@@ -74,7 +74,13 @@ export default {
               this.$router.push('/dashboard/my-account')
             })
             .catch(errors => {
-              console.log("errors" + errors)
+              if (errors.response) {
+                for (const property in errors.response.data) {
+                  this.errors.push(`${property}: ${errors.response.data[property]}`)
+                }
+              } else if (errors.message) {
+                this.errors.push(errors.message);
+              }
             })
       }
     }
