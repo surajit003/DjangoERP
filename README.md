@@ -47,7 +47,11 @@ On a high level, let's understand the different layers of processing
 
 Small gotcha ?
 
-        - The view uses something called a use_case_type. What the heck is a use_case_type ? Well, put it this way - Think about, if you decide to save the data to an external crm e.g hubspot. Then, simply changing the use_case_type="hubspot" is enough and based on the use_case_type, the `get_repository_for_{entity_name}` will return the right repository. So, technically nothing changes in the view and you can plug external crms to save data or get data easily.
+        - The view uses something called a use_case_type. What the heck is a use_case_type ? 
+        Well, put it this way - Think about, if you decide to save the data to an external crm e.g hubspot.
+        Then, simply changing the use_case_type="hubspot" is enough and based on the use_case_type, 
+        the `get_repository_for_{entity_name}` will return theright repository. 
+        So, technically nothing changes in the view and you can plug external crms to save data or get data easily.
  
         - Additionally, the repository abstracts away all the CRUD logic. So, plugging things in and out without worrying about the Infrastructure is a charm.
  
