@@ -47,7 +47,7 @@ High Level Overview of the Backend architecture and the Why?
 3. npm run serve
 
 ###### Project Priorities
-1. Human Resources - TODO
+1. Human Resource Management - TODO
 2. Customer Relationship Management (CRM) - Ongoing
 3. Supply Chain Management (SCM) - TODO
 4. Inventory Management - TODO
