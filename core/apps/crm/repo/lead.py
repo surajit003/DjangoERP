@@ -1,4 +1,5 @@
 from typing import Optional
+from uuid import UUID
 
 from django.db import IntegrityError
 
@@ -22,9 +23,9 @@ class LeadRepository(AbstractLeadRepository):
         lead_obj = Lead.objects.get(id=obj.id)
         return LeadEntity(**lead_obj.__dict__)
 
-    def delete(self, lead_id) -> None:
+    def delete(self, lead_id: UUID) -> None:
         Lead.objects.filter(id=lead_id).delete()
 
-    def get(self, lead_id) -> LeadEntity:
+    def get(self, lead_id: UUID) -> LeadEntity:
         lead_obj = Lead.objects.get(id=lead_id)
         return LeadEntity(**lead_obj.__dict__)
