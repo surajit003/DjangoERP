@@ -2,6 +2,15 @@ from core.apps.crm.repo.base import AbstractLeadRepository
 from core.apps.crm.repo.lead import LeadRepository
 
 
-def get_repository_for_lead_creation(use_case_type: str) -> AbstractLeadRepository:
-    if use_case_type == "internal":
+class AbstractUseCaseFactory:
+
+    def get_repo(self):
+        ...
+
+
+class InternalUseCaseFactory(AbstractUseCaseFactory):
+
+    def get_repo(self):
         return LeadRepository()
+
+
