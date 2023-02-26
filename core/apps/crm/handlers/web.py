@@ -11,7 +11,9 @@ class LeadAPIView(APIView):
     def post(self, request):
         data = request.data
         try:
-            lead = create_lead(lead_data=data, lead_repo=InternalUseCaseFactory().get_repo())
+            lead = create_lead(
+                lead_data=data, lead_repo=InternalUseCaseFactory().get_repo()
+            )
         except LeadExistException:
             return Response(
                 {"message": "Lead with that Email Exist"},
