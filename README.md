@@ -1,5 +1,5 @@
 # DjangoERP
-A complete set of ERP built with Django Rest Framework and Vue js
+A complete set of ERP tools built with Django Rest Framework and Vue js
 
 ## Backend
 1. Django Rest Framework
@@ -20,4 +20,11 @@ A complete set of ERP built with Django Rest Framework and Vue js
 1. cd core/frontend/crm
 2. npm install
 3. npm run serve
+
+###### Project Priorities
+1. Human Resources - TODO
+2. Customer Relationship Management (CRM) - Ongoing
+3. Supply Chain Management (SCM) - TODO
+4. Inventory Management - TODO
+5. Accounting/Financial Management - TODO
 
