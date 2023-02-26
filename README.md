@@ -4,8 +4,8 @@ A complete set of ERP tools built with Django Rest Framework and Vue js
 
 Structural Architecture of the Project
 - Everything resides in the core directory
-- The apps are named by the following convention core/apps/crm, core/apps/common, core/apps/hrm, core/apps/fintech etc
-- The frontend code resides in core/frontend and it is separated by app name e.g frontend/crm, frontend/hrm/ etc
+- The apps are named by the following convention `core/apps/crm`, `core/apps/common`, `core/apps/hrm`, `core/apps/fintech` etc
+- The frontend code resides in core/frontend and it is separated by app name e.g `frontend/crm`, `frontend/hrm/` etc
 
 High Level Overview of the Backend architecture and the Why?
 - I have decided not to go with the ideal MVT architecture of Django.
