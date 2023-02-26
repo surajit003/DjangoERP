@@ -1,6 +1,5 @@
 from abc import abstractmethod, ABC
 
-from core.apps.crm.repo.base import AbstractLeadRepository
 from core.apps.crm.repo.lead import LeadRepository
 
 
