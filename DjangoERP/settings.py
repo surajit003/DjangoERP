@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "djoser",
     "core.apps.common",
     "core.apps.crm",
+    "core.apps.users",
+    "core.apps.profiles",
 ]
 
 MIDDLEWARE = [
