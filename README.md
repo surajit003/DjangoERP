@@ -79,6 +79,9 @@ How to run the Frontend
 2. npm install
 3. npm run serve
 
+How to run tests 
+1. pytest
+
 Project Priorities
 1. Human Resource Management - TODO
 2. Customer Relationship Management (CRM) - Ongoing
