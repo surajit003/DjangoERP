@@ -20,9 +20,11 @@ def test_lead_repository_get(lead_factory, lead_repo):
 
 
 def test_lead_repository_update(lead_factory, lead_repo):
-    lead_data = lead_factory()
-    lead_data_updated = lead_factory(company="test-company-1")
+    lead_data_updated = lead_factory()
+    lead_data_updated.company = "test-company-1"
+    lead_data_updated.contact_person = "test-user-1"
     lead_data_updated_entity = LeadEntity(**lead_data_updated.__dict__)
-    lead_repo.update(lead_data_updated_entity)
+    lead_repo.update(lead_data_updated.id, lead_data_updated_entity)
     lead = lead_repo.get(lead_data_updated.id)
     assert lead.company == "test-company-1"
+    assert lead_data_updated.contact_person == "test-user-1"

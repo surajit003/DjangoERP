@@ -15,7 +15,7 @@ class AbstractLeadRepository(ABC):
         ...
 
     @abstractmethod
-    def update(self, lead: LeadEntity) -> LeadEntity:
+    def update(self, lead_id: UUID, lead: LeadEntity) -> LeadEntity:
         ...
 
     @abstractmethod
