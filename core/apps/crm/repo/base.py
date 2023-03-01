@@ -15,9 +15,9 @@ class AbstractLeadRepository(ABC):
         ...
 
     @abstractmethod
-    def update(self, lead_id: UUID, lead: LeadEntity) -> LeadEntity:
+    def delete(self, lead_id: UUID):
         ...
 
     @abstractmethod
-    def delete(self, lead_id: UUID) -> None:
+    def list_all(self):
         ...
