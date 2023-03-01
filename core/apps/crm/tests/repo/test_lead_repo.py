@@ -1,6 +1,7 @@
 import pytest
 
 from core.apps.crm.domain.entities import LeadEntity
+from core.apps.crm.repo.exceptions import LeadExistException
 
 pytestmark = pytest.mark.django_db
 
@@ -11,6 +12,22 @@ def test_lead_repository_create(lead_factory, lead_repo):
     lead_repo.save(lead_entity)
     lead_obj = lead_repo.get(lead_entity.id)
     assert lead_obj.id == lead_entity.id
+
+
+def test_lead_repository_raises_exception(lead_factory, lead_repo):
+    lead_data_1 = lead_factory.build(email="abc@example.com")
+    lead_data_2 = lead_factory.build(email="abc@example.com")
+
+    lead_entity_1 = LeadEntity(**lead_data_1.__dict__)
+    lead_entity_2 = LeadEntity(**lead_data_2.__dict__)
+
+    lead_repo.save(lead_entity_1)
+    with pytest.raises(LeadExistException) as exc:
+        lead_repo.save(lead_entity_2)
+
+    assert isinstance(exc, LeadExistException)
+
+    breakpoint()
 
 
 def test_lead_repository_get(lead_factory, lead_repo):
