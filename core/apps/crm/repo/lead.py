@@ -18,10 +18,10 @@ class LeadRepository(AbstractLeadRepository):
         if self._get_instance(instance.id):
             Lead.objects.filter(id=instance.id).update(**instance.dict())
             lead = self._get_instance(instance.id)
-            return LeadEntity(**lead.__dict__)
         else:
             lead = Lead.objects.create(**instance.dict())
-            return LeadEntity(**lead.__dict__)
+
+        return LeadEntity(**lead.__dict__)
 
     def save(self, obj: LeadEntity) -> LeadEntity:
         try:
