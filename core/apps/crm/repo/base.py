@@ -17,3 +17,7 @@ class AbstractLeadRepository(ABC):
     @abstractmethod
     def delete(self, lead_id: UUID):
         ...
+
+    @abstractmethod
+    def list_all(self):
+        ...

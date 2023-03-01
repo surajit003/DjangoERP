@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Sequence
 from uuid import UUID
 
 from django.db import IntegrityError
@@ -6,7 +6,7 @@ from django.db import IntegrityError
 from core.apps.crm.domain.entities import LeadEntity
 from core.apps.crm.models.lead import Lead
 from core.apps.crm.repo.base import AbstractLeadRepository
-from core.apps.crm.repo.exceptions import LeadExistException
+from core.apps.crm.repo.exceptions import LeadExistException, LeadDoesNotExistException
 
 
 class LeadRepository(AbstractLeadRepository):
@@ -17,9 +17,11 @@ class LeadRepository(AbstractLeadRepository):
     def _create_or_update_instance(self, instance):
         if self._get_instance(instance.id):
             Lead.objects.filter(id=instance.id).update(**instance.dict())
-            return self._get_instance(instance.id)
+            lead = self._get_instance(instance.id)
+            return LeadEntity(**lead.__dict__)
         else:
-            return Lead.objects.create(**instance.dict())
+            lead = Lead.objects.create(**instance.dict())
+            return LeadEntity(**lead.__dict__)
 
     def save(self, obj: LeadEntity) -> LeadEntity:
         try:
@@ -28,8 +30,15 @@ class LeadRepository(AbstractLeadRepository):
             raise LeadExistException(exc) from exc
 
     def get(self, lead_id: UUID) -> LeadEntity:
-        return self._get_instance(lead_id)
+        if lead := self._get_instance(lead_id):
+            return LeadEntity(**lead.__dict__)
+        else:
+            raise LeadDoesNotExistException
 
-    def delete(self, lead_id: UUID):
+    def delete(self, lead_id: UUID) -> None:
         instance = self._get_instance(lead_id)
         return instance.delete()
+
+    def list_all(self) -> Optional[Sequence[LeadEntity]]:
+        leads = Lead.objects.all()
+        return [LeadEntity(**lead.__dict__) for lead in leads]
