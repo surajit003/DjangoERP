@@ -27,7 +27,7 @@ class LeadRepository(AbstractLeadRepository):
         try:
             return self._create_or_update_instance(obj)
         except IntegrityError as exc:
-            raise LeadExistException(exc) from exc
+            raise LeadExistException
 
     def get(self, lead_id: UUID) -> LeadEntity:
         if lead := self._get_instance(lead_id):

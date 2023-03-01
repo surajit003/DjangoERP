@@ -22,10 +22,8 @@ def test_lead_repository_raises_exception(lead_factory, lead_repo):
     lead_entity_2 = LeadEntity(**lead_data_2.__dict__)
 
     lead_repo.save(lead_entity_1)
-    with pytest.raises(LeadExistException) as exc:
+    with pytest.raises(LeadExistException):
         lead_repo.save(lead_entity_2)
-
-    assert isinstance(exc, LeadExistException)
 
 
 def test_lead_repository_get(lead_factory, lead_repo):
