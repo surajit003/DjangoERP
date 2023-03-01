@@ -10,22 +10,26 @@ from core.apps.crm.repo.exceptions import LeadExistException
 
 
 class LeadRepository(AbstractLeadRepository):
-    def save(self, obj: LeadEntity) -> Optional[LeadEntity]:
+    @staticmethod
+    def _get_instance(instance_id):
+        return Lead.objects.filter(id=instance_id).first()
+
+    def _create_or_update_instance(self, instance):
+        if self._get_instance(instance.id):
+            Lead.objects.filter(id=instance.id).update(**instance.dict())
+            return self._get_instance(instance.id)
+        else:
+            return Lead.objects.create(**instance.dict())
+
+    def save(self, obj: LeadEntity) -> LeadEntity:
         try:
-            lead_obj = Lead(**obj.dict())
-            lead_obj.save()
-            return obj
+            return self._create_or_update_instance(obj)
         except IntegrityError as exc:
-            raise LeadExistException(exc)
-
-    def update(self, lead_id: UUID, obj: LeadEntity) -> LeadEntity:
-        Lead.objects.filter(id=lead_id).update(**obj.dict())
-        lead_obj = Lead.objects.get(id=lead_id)
-        return LeadEntity(**lead_obj.__dict__)
-
-    def delete(self, lead_id: UUID) -> None:
-        Lead.objects.filter(id=lead_id).delete()
+            raise LeadExistException(exc) from exc
 
     def get(self, lead_id: UUID) -> LeadEntity:
-        lead_obj = Lead.objects.get(id=lead_id)
-        return LeadEntity(**lead_obj.__dict__)
+        return self._get_instance(lead_id)
+
+    def delete(self, lead_id: UUID):
+        instance = self._get_instance(lead_id)
+        return instance.delete()
