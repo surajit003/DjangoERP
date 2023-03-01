@@ -27,8 +27,6 @@ def test_lead_repository_raises_exception(lead_factory, lead_repo):
 
     assert isinstance(exc, LeadExistException)
 
-    breakpoint()
-
 
 def test_lead_repository_get(lead_factory, lead_repo):
     lead_data = lead_factory()
