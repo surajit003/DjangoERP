@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import Optional, Sequence
 from uuid import UUID
 
 from core.apps.crm.domain.entities import LeadEntity
@@ -19,5 +19,5 @@ class AbstractLeadRepository(ABC):
         ...
 
     @abstractmethod
-    def get_all(self):
+    def get_all(self) -> Optional[Sequence[LeadEntity]]:
         ...
