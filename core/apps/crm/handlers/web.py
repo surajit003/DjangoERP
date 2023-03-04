@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 from core.apps.crm.domain.exceptions import InvalidPhoneNumberException
 from core.apps.crm.handlers.factories import InternalUseCaseFactory
-from core.apps.crm.logic.lead import create_lead, get_lead
+from core.apps.crm.logic.lead import create_lead, get_lead, update_lead
 from core.apps.crm.repo.exceptions import LeadExistException, LeadDoesNotExistException
 
 
@@ -49,4 +49,22 @@ class LeadAPIView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        return Response(lead.dict(), status=status.HTTP_200_OK)
+
+    def put(self, request, lead_id):
+        try:
+            data = request.data
+            lead = get_lead(
+                lead_id=lead_id, lead_repo=InternalUseCaseFactory().get_repo()
+            )
+        except LeadDoesNotExistException:
+            return Response(
+                {"message": "Lead with that Email Doesnot exist"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        lead = update_lead(
+            lead_entity=lead,
+            lead_data=data,
+            lead_repo=InternalUseCaseFactory().get_repo(),
+        )
         return Response(lead.dict(), status=status.HTTP_200_OK)

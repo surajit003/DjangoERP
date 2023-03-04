@@ -10,8 +10,10 @@ def create_lead(lead_data: dict, lead_repo: AbstractLeadRepository) -> LeadEntit
     return lead_repo.save(lead_entity)
 
 
-def update_lead(lead_data: dict, lead_repo: AbstractLeadRepository) -> LeadEntity:
-    lead_entity = LeadEntity(**lead_data)
+def update_lead(
+    lead_entity: LeadEntity, lead_data: dict, lead_repo: AbstractLeadRepository
+) -> LeadEntity:
+    lead_entity.__dict__.update(lead_data)
     return lead_repo.save(lead_entity)
 
 
