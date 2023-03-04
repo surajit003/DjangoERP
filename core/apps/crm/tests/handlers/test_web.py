@@ -91,6 +91,18 @@ def test_get_lead(client, lead_factory):
     assert resp_json["id"] == str(lead.id)
 
 
+def test_leads(client, lead_factory):
+    lead_factory()
+    lead_factory()
+    response = client.get(
+        "/api/v1/leads/",
+    )
+    resp_json = response.json()
+    assert response.status_code == 200
+    assert resp_json
+    assert len(resp_json["message"]) == 2
+
+
 def test_get_lead_raises_lead_does_not_exist_error(client):
     response = client.get(
         "/api/v1/leads/1082cef2-de55-4683-b78c-79e6b5ef8f6b/",
