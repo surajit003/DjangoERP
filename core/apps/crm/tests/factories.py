@@ -8,7 +8,7 @@ from core.apps.crm.models.lead import Lead
 
 
 class LeadFactory(factory.django.DjangoModelFactory):
-    id = factory.LazyAttribute(lambda s: uuid.uuid4().hex)
+    id = factory.LazyAttribute(lambda s: uuid.uuid4())
     company = factory.Faker("pystr")
     contact_person = factory.Faker("pystr")
     email = factory.Faker("email")

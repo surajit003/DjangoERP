@@ -73,3 +73,24 @@ def test_customer_create_raises_validation_error(client):
     assert response.status_code == 400
     assert resp_json["message"][0]["loc"] == ["phone"]
     assert resp_json["message"][0]["msg"] == "field required"
+
+
+def test_get_lead(client, lead_factory):
+    lead = lead_factory()
+    response = client.get(
+        f"/api/v1/leads/{lead.id}/",
+    )
+    resp_json = response.json()
+    assert response.status_code == 200
+    assert resp_json
+    assert resp_json["company"] == lead.company
+    assert resp_json["id"] == str(lead.id)
+
+
+def test_get_lead_raises_lead_does_not_exist_error(client):
+    response = client.get(
+        "/api/v1/leads/1082cef2-de55-4683-b78c-79e6b5ef8f6b/",
+    )
+    resp_json = response.json()
+    assert response.status_code == 400
+    assert resp_json["message"] == "Lead with that Email Doesnot exist"
