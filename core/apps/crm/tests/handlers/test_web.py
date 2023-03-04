@@ -109,7 +109,7 @@ def test_get_lead_raises_lead_does_not_exist_error(client):
     )
     resp_json = response.json()
     assert response.status_code == 400
-    assert resp_json["message"] == "Lead with that Email Doesnot exist"
+    assert resp_json["message"] == "Lead with that Id Doesnot exist"
 
 
 def test_lead_update(client, lead_factory):
@@ -140,4 +140,4 @@ def test_lead_update_raises_lead_does_not_exist_exception(client, lead_factory):
     )
     resp_json = response.json()
     assert response.status_code == 400
-    assert resp_json["message"] == "Lead with that Email Doesnot exist"
+    assert resp_json["message"] == "Lead with that Id Doesnot exist"

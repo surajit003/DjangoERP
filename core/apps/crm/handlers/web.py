@@ -56,7 +56,7 @@ class LeadAPIView(APIView):
             )
         except LeadDoesNotExistException:
             return Response(
-                {"message": "Lead with that Email Doesnot exist"},
+                {"message": "Lead with that Id Doesnot exist"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -70,7 +70,7 @@ class LeadAPIView(APIView):
             )
         except LeadDoesNotExistException:
             return Response(
-                {"message": "Lead with that Email Doesnot exist"},
+                {"message": "Lead with that Id Doesnot exist"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
         lead = update_lead(
