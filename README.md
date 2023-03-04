@@ -82,6 +82,9 @@ How to run the Frontend
 How to run tests 
 1. pytest
 
+`API documentation` 
+http://localhost:8000/api/v1/docs/
+
 Project Priorities
 1. Human Resource Management - TODO
 2. Customer Relationship Management (CRM) - Ongoing
