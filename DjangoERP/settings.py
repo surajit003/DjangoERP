@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "djoser",
+    "drf_yasg",
     "core.apps.common",
     "core.apps.crm",
 ]
