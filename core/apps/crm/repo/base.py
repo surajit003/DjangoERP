@@ -19,5 +19,5 @@ class AbstractLeadRepository(ABC):
         ...
 
     @abstractmethod
-    def list_all(self):
+    def get_all(self):
         ...

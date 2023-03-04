@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 from core.apps.crm.domain.exceptions import InvalidPhoneNumberException
 from core.apps.crm.handlers.factories import InternalUseCaseFactory
-from core.apps.crm.logic.lead import create_lead, get_lead, update_lead
+from core.apps.crm.logic.lead import create_lead, get_lead, update_lead, get_leads
 from core.apps.crm.repo.exceptions import LeadExistException, LeadDoesNotExistException
 
 
@@ -38,7 +38,18 @@ class LeadAPIView(APIView):
 
         return Response(lead.dict(), status=status.HTTP_201_CREATED)
 
-    def get(self, request, lead_id):
+    def get(self, request, lead_id=None):
+        if not lead_id:
+            leads_dict = {}
+            if leads := get_leads(lead_repo=InternalUseCaseFactory().get_repo()):
+                leads_dict = [lead.__dict__ for lead in leads]
+
+            return Response(
+                {
+                    "message": leads_dict,
+                },
+                status=status.HTTP_200_OK,
+            )
         try:
             lead = get_lead(
                 lead_id=lead_id, lead_repo=InternalUseCaseFactory().get_repo()

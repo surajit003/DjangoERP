@@ -39,6 +39,6 @@ class LeadRepository(AbstractLeadRepository):
         instance = self._get_instance(lead_id)
         return instance.delete()
 
-    def list_all(self) -> Optional[Sequence[LeadEntity]]:
+    def get_all(self) -> Optional[Sequence[LeadEntity]]:
         leads = Lead.objects.all()
         return [LeadEntity(**lead.__dict__) for lead in leads]

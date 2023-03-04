@@ -1,6 +1,6 @@
 import pytest
 
-from core.apps.crm.logic.lead import create_lead, list_all, update_lead
+from core.apps.crm.logic.lead import create_lead, get_leads, update_lead
 
 pytestmark = pytest.mark.django_db
 
@@ -30,6 +30,6 @@ def test_update_lead(lead_factory, lead_repo):
 def test_list_all(lead_factory, lead_repo):
     lead_factory()
     lead_factory()
-    leads = list_all(lead_repo)
+    leads = get_leads(lead_repo)
     assert leads
     assert len(leads) == 2

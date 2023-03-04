@@ -21,5 +21,5 @@ def get_lead(lead_id: UUID, lead_repo: AbstractLeadRepository) -> Optional[LeadE
     return lead_repo.get(lead_id)
 
 
-def list_all(lead_repo: AbstractLeadRepository) -> Optional[Sequence[LeadEntity]]:
-    return lead_repo.list_all()
+def get_leads(lead_repo: AbstractLeadRepository) -> Optional[Sequence[LeadEntity]]:
+    return lead_repo.get_all()
