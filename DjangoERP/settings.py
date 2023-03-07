@@ -48,12 +48,7 @@ THIRD_PARTY_APPS = [
     "rest_framework_simplejwt",
     "corsheaders",
     "djoser",
-    "django_countries",
-    "phonenumber_field",
-    "django_filters",
-]
-
-LOCAL_APPS = [
+    "drf_yasg",
     "core.apps.common",
     "core.apps.crm",
     "core.apps.users",

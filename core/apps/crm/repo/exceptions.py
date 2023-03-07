@@ -1,2 +1,6 @@
 class LeadExistException(Exception):
     ...
+
+
+class LeadDoesNotExistException(Exception):
+    ...
