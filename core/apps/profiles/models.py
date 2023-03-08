@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
-from core.apps.common.models import TimeStampedUUIDModel
+from core.apps.common.models import TimeStampedModel
 
 User = get_user_model()
 
@@ -15,7 +15,7 @@ class Gender(models.TextChoices):
     OTHER = "Other", _("Other")
     
     
-class UserProfile(TimeStampedUUIDModel):
+class UserProfile(TimeStampedModel):
     user = models.OneToOneField(User, related_name="user_profile", on_delete=models.CASCADE)
     phone_number = PhoneNumberField(
         verbose_name=_("Phone Number"), max_length=30, default="+254710123456"
