@@ -688,6 +688,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Security vulnerability scan cache file
+.dccache
+
 # Spyder project settings
 .spyderproject
 .spyproject
