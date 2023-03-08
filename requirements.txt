@@ -9,7 +9,7 @@ pytest-django==4.5.2
 pytest-factoryboy==2.5.1
 pydantic==1.10.5
 black==23.1.0
-djangorestframework==3.14.0
+djangorestframework #unpinning version dependency here to avoid conflicts for PyJWT For ref - https://github.com/surajit003/DjangoERP/actions/runs/4359929150/jobs/7631136767
 email-validator==1.3.1
 Markdown==3.4.1
 django-filter==22.1
