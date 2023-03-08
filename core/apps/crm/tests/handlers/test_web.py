@@ -1,5 +1,3 @@
-import json
-
 import pytest
 
 from core.apps.crm.domain.entities import LeadEntity
