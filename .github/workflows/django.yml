@@ -27,3 +27,4 @@ jobs:
         pre-commit run --all-files
     - name: Run Tests
       run: |
+        pytest -v
