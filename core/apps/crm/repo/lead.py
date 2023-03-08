@@ -26,7 +26,7 @@ class LeadRepository(AbstractLeadRepository):
     def save(self, obj: LeadEntity) -> LeadEntity:
         try:
             return self._create_or_update_instance(obj)
-        except IntegrityError as exc:
+        except IntegrityError:
             raise LeadExistException
 
     def get(self, lead_id: UUID) -> LeadEntity:
