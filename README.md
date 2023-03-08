@@ -91,4 +91,5 @@ Project Priorities
 3. Supply Chain Management (SCM) - TODO
 4. Inventory Management - TODO
 5. Accounting/Financial Management - TODO
+6. User Management/ Authentication - Ongoing
 
