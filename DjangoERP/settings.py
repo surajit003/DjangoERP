@@ -49,10 +49,16 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "djoser",
     "drf_yasg",
-    "core.apps.common",
-    "core.apps.crm",
-    "core.apps.users",
-    "core.apps.profiles"
+    "django_filters",
+    "django_countries",
+    "phonenumber_field",
+]
+
+LOCAL_APPS = [
+     "core.apps.common",
+     "core.apps.crm",
+     "core.apps.users",
+     "core.apps.profiles"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
