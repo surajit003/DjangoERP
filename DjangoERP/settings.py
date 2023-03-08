@@ -49,7 +49,14 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "djoser",
     "drf_yasg",
-    "core.apps.common",
+    "django_filters",
+    "django_countries",
+    "phonenumber_field",
+   
+]
+
+LOCAL_APPS = [
+     "core.apps.common",
     "core.apps.crm",
     "core.apps.users",
     "core.apps.profiles"
