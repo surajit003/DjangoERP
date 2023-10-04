@@ -8,7 +8,21 @@
           <div class="field">
             <label>Email</label>
             <div class="control">
-              <input type="email" name="email" class="input" v-model="username">
+              <input type="email" name="email" class="input" v-model="email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>First Name</label>
+            <div class="control">
+              <input type="text" name="first_name" class="input" v-model="first_name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Last Name</label>
+            <div class="control">
+              <input type="text" name="last_name" class="input" v-model="last_name">
             </div>
           </div>
 
@@ -22,7 +36,7 @@
           <div class="field">
             <label>Confirm password</label>
             <div class="control">
-              <input type="password" name="password2" class="input" v-model="password2">
+              <input type="password" name="password2" class="input" v-model="re_password">
             </div>
           </div>
           <div class="notification is-danger" v-if="errors.length">
@@ -47,9 +61,11 @@ export default {
   name: 'SignUpView',
   data() {
     return {
-      username: '',
+      email: '',
+      first_name: '',
+      last_name: '',
       password1: '',
-      password2: '',
+      re_password: '',
       errors: [],
     }
   },
@@ -58,22 +74,33 @@ export default {
       console.log("submit form")
       this.errors = []
 
-      if (this.username === '') {
+      if (this.email === '') {
         this.errors.push("Username cannot be empty")
+      }
+
+      if (this.first_name === '') {
+        this.errors.push("First Name cannot be empty")
+      }
+
+      if (this.last_name === '') {
+        this.errors.push("Last Name cannot be empty")
       }
 
       if (this.password1 === '') {
         this.errors.push("Password cannot be empty")
       }
 
-      if (this.password2 === '') {
+      if (this.re_password === '') {
         this.errors.push("Confirm Password cannot be empty")
       }
 
       if (!this.errors.length) {
         const signUpFormData = {
-          username: this.username,
-          password: this.password1
+          email: this.email,
+          first_name: this.first_name,
+          last_name: this.last_name,
+          password: this.password1,
+          re_password: this.re_password
         }
         axios
             .post("/api/v1/users/", signUpFormData)

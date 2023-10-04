@@ -8,7 +8,7 @@
           <div class="field">
             <label>Email</label>
             <div class="control">
-              <input type="email" name="email" class="input" v-model="username">
+              <input type="email" name="email" class="input" v-model="email">
             </div>
           </div>
 
@@ -38,7 +38,7 @@ export default {
   name: "LoginView",
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
       errors: [],
     }
@@ -46,7 +46,7 @@ export default {
   methods: {
     loginForm() {
       this.errors = []
-      if (this.username === '') {
+      if (this.email === '') {
         this.errors.push("Email cannot be empty")
       }
 
@@ -60,7 +60,7 @@ export default {
         localStorage.removeItem('token')
 
         const loginFormData = {
-          username: this.username,
+          email: this.email,
           password: this.password
         }
 
